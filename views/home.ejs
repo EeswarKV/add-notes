@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+    <title>Note Keeper</title>
+</head>
+  
+<body>
+    <h1>Note Keeper</h1>
+  
+    <div style="display: flex;">
+  
+        <% data.length > 0 && data.forEach(element=> { %>
+  
+            <form action="/update" method="post">
+                <input type="number" style="display: none;" 
+                       name="noteId" value="<%= element.noteId %>">
+                <textarea type="text" rows="6" cols="30" 
+                          placeholder="Type Here..." name="noteContent" style="background-color: <%= element.noteColor %>"
+                    value="<%= element.noteContent %>">
+                      <%= element.noteContent %></textarea>
+                <br>
+                <button type="submit">Update</button>
+            </form>
+
+            <form action="/delete" method="post">
+                <input type="number" style="display: none;" 
+                       name="noteId" value="<%= element.noteId %>">
+                <button type="submit" 
+                        style="margin: 0px 4px;">✕</button>
+            </form>
+
+            <% }) %>
+
+            
+    </div>
+  
+    <h1>Add Note</h1>
+    <form action="/" method="post">
+        <input type="number" style="display: none;" 
+               name="noteId">
+        <textarea type="text" rows="6" cols="30" 
+                  placeholder="Type Here..." 
+                  name="noteContent"
+                  style="background-color: <%= defaultColor %>"
+                  ></textarea>
+        <br>
+        <button type="submit">Add</button>
+    </form>
+      <form action="/updatecolor" method="post">
+                <button type="submit" style="background-color: yellow" name="noteColor" value="yellow">Yellow</button>
+                <button type="submit" style="background-color: lime;" name="noteColor" value="lime">Lime</button>
+                <button type="submit" style="background-color: orange;" name="noteColor" value="orange">Orange</button>
+        </form>
+</body>
+
+<script>
+   
+</script>
+  
+</html>
